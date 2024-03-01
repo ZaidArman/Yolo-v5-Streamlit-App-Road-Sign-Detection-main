@@ -2,5 +2,5 @@ train: ./dataset/train/images
 val: ./dataset/test/images
 
 nc: 4
-names: ['trafficlight','speedlimit','crosswalk','stop']
+names: ['red','yellow','green','stop']
 

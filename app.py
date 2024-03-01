@@ -54,11 +54,25 @@ def get_subdirs(b='.'):
     return result
 
 
+# def get_detection_folder():
+#     '''
+#         Returns the latest folder in a runs\detect
+#     '''
+#     return max(get_subdirs(os.path.join('yolov5', 'runs', 'detect')), key=os.path.getmtime)
 def get_detection_folder():
     '''
-        Returns the latest folder in a runs\detect
+    Returns the latest folder in a runs\detect
     '''
-    return max(get_subdirs(os.path.join('yolov5', 'runs', 'detect')), key=os.path.getmtime)
+    subdirs = get_subdirs(os.path.join('runs', 'detect'))
+    
+    if not subdirs:
+        # Return None when no subdirectories are found
+        return None
+    
+    return max(subdirs, key=os.path.getmtime)
+
+
+
 
 #---------------------------Main Function for Execution--------------------------
 
@@ -87,7 +101,12 @@ def main():
     MIN_SCORE_THRES = st.sidebar.slider('Min Confidence Score Threshold', min_value = 0.0, max_value = 1.0, value = 0.4)
     #################### /Parameters to setup ########################################
     
+    print("Current Working Directory:", os.getcwd())
     weights = os.path.join(".", "yolov5", "models", "best.pt")
+    # weights = os.path.join("yolov5", "models", "best.pt")
+    # weights = os.path.join(os.getcwd(), "yolov5", "models", "best.pt")
+
+    print("Current Working Directory2:", os.getcwd())
 
     if source_index == 0:
         
@@ -101,8 +120,7 @@ def main():
                 st.sidebar.image(uploaded_file)
                 picture = Image.open(uploaded_file)
                 picture.save(os.path.join('.', 'yolov5', 'data', 'images', uploaded_file.name))
-                # data_source = os.path.join('.', 'yolov5', 'data', 'images', uploaded_file.name)
-                print()
+                data_source = os.path.join('.', 'yolov5', 'data', 'images', uploaded_file.name)
         
         elif uploaded_file is None:
             is_valid = True
@@ -244,5 +262,3 @@ if __name__ == "__main__":
     except SystemExit:
         pass
 # ------------------------------------------------------------------
-
-
