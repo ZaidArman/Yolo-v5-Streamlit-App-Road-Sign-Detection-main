@@ -2,7 +2,7 @@
 
 Step 1
 
-- `git clone "https://github.com/mazqoty/Yolo-v5-Streamlit-App-Road-Sign-Detection.git"`
+- `git clone "https://github.com/ZaidArman/Yolo-v5-Streamlit-App-Road-Sign-Detection.git"`
 - Get/Setup Kaggle API credentials, download `kaggle.json` file
 - `conda create -n envyolov5` or `python -m venv envyolov5`
 - `conda activate envyolov5` or `.\envyolov5\Scripts\activate` for Windows `source envyolov5/bin/activate` for Linux
@@ -30,5 +30,5 @@ Error handling:
 - `conda list`
 - `python.exe -m pip install -r requirements.txt --user`
 
-#### Click Here To Watch The Video
-[![asciicast](https://i.imgur.com/wv8sS6z.jpg)](https://youtu.be/l0yEcua5HEw)
+Note:
+Currently only Images detection is working, if you want to detect Videos or Live, set according to your requirements
